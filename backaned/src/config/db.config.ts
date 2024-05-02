@@ -1,16 +1,14 @@
+import mongoose from "mongoose";
 import app from "../app";
-import { port } from "../env";
+import { dbUrl, port } from "../env";
 
 export const connectDB = async () => {
     try {
-        // const connectionInstance = await mongoose.connect(`${dbUrl}`);
-        // console.log(
-        //     `\n MongoDB connected !! DB Host: ${connectionInstance.connection.host}`
-        // );
-        app.listen(port, () => {
-            console.log(`server running at ${port} port`);
-        });
+        await mongoose.connect(dbUrl);
+        console.log(`MongoDB connected at ${dbUrl}`);
+        app.listen(port, () => console.log(`Server running at ${port} port`));
     } catch (error) {
         console.error("Error connecting to MongoDB:", error);
+        process.exit(1);
     }
 };
