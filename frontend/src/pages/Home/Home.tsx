@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { ErrorOption, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { IoEye, IoEyeOff } from "react-icons/io5";
+
 
 interface FormInputs {
   email: string;
@@ -12,7 +13,7 @@ interface FormInputs {
 
 const Home = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmConfirmPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const {
     register,
@@ -23,7 +24,10 @@ const Home = () => {
 
   const handleSignUp: SubmitHandler<FormInputs> = async (data) => {
     try {
-      console.log(data);
+     const userInfo=data
+
+     const res=await 
+
     } catch (error) {
       if (error instanceof Error) {
         console.error(error.message);
@@ -118,7 +122,7 @@ const Home = () => {
             <span
               className="absolute right-1 bottom-1/3 cursor-pointer"
               onClick={() =>
-                setShowConfirmConfirmPassword(!showConfirmPassword)
+                setShowConfirmPassword(!showConfirmPassword)
               }
             >
               {showConfirmPassword ? (
@@ -139,7 +143,6 @@ const Home = () => {
             </span>
           </div>
           <input
-            
             type="text"
             placeholder="Type here"
             className="input input-bordered input-accent w-full "
